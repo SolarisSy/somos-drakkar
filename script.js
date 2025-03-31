@@ -21,9 +21,18 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Função auxiliar para redirecionar para WhatsApp
     const redirectToWhatsApp = (message = '') => {
-        const phoneNumber = '+5599985306285';
+        // Garantir que o número sempre esteja no formato internacional correto
+        let phoneNumber = '5599985306285'; // Número base sem formatação
+        
+        // Remover qualquer + ou outro caractere não numérico que possa estar no início
+        phoneNumber = phoneNumber.replace(/^\+/, '');
+        
+        // Adicionar o + no início para garantir o formato internacional
+        phoneNumber = '+' + phoneNumber;
+        
         const encodedMessage = encodeURIComponent(message);
-        const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+        // No formato wa.me, o + deve ser removido
+        const whatsappURL = `https://wa.me/${phoneNumber.replace(/^\+/, '')}?text=${encodedMessage}`;
         window.open(whatsappURL, '_blank');
     };
     

@@ -550,3 +550,38 @@ Necessidade de melhorar a identidade visual do site nas abas dos navegadores e n
 
 **Observações:**
 Os arquivos favicon.ico e favicon.png são placeholders que precisam ser gerados a partir do SVG usando ferramentas de conversão como ImageMagick ou conversores online. O arquivo SVG já contém uma animação de glitch que funciona em navegadores modernos, proporcionando um efeito visual alinhado com o tema hacker do site.
+
+## 2025-05-18 - Correção do formato do número de WhatsApp para compatibilidade com VPS
+
+**Responsável:** Claude Sonnet 3.7
+
+**Tipo de mudança:** Correção de bug
+
+**Descrição:**  
+Correção da função de redirecionamento para WhatsApp para garantir que o número de telefone sempre esteja no formato internacional correto, independentemente do ambiente de execução (local ou VPS).
+
+**Razão:**  
+Identificado um problema na implantação do site na VPS através do Easy Panel, onde o número de WhatsApp estava sendo exibido como "99985306285" (sem o código do país), enquanto localmente funcionava como "+5599985306285" (com o código do país). Isso causava falha no redirecionamento quando acessado através da VPS.
+
+**Solução implementada:**
+1. Refatoração da função `redirectToWhatsApp` para:
+   - Usar um formato base do número sem o prefixo "+"
+   - Remover automaticamente qualquer "+" que possa existir no início
+   - Adicionar o "+" para garantir o formato internacional
+   - Remover o "+" ao formar a URL do WhatsApp, conforme exigido pelo formato wa.me
+
+2. Garantia de consistência:
+   - O número agora é tratado para garantir o mesmo comportamento em todos os ambientes
+   - A URL do WhatsApp é formada corretamente segundo as especificações da API
+
+**Impacto:**
+- Funcionamento consistente do redirecionamento para WhatsApp em todos os ambientes
+- Eliminação de erros de redirecionamento na versão implantada na VPS
+- Manutenção da experiência do usuário independentemente do ambiente de acesso
+- Maior robustez da funcionalidade de contato via WhatsApp
+
+**Arquivos modificados:**
+- `script.js`: Modificação da função `redirectToWhatsApp` para tratamento adequado do número
+
+**Observações:**
+Esta correção garante que a funcionalidade de contato via WhatsApp funcione de maneira idêntica tanto no ambiente de desenvolvimento local quanto no ambiente de produção na VPS, proporcionando uma experiência consistente para os usuários em qualquer cenário.

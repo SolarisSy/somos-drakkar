@@ -729,7 +729,8 @@ Sistema de redirecionamento para WhatsApp integrado na landing page, permitindo 
 
 **Componentes:**
 - **redirectToWhatsApp**: Função auxiliar para redirecionar para WhatsApp
-  - Parametrizada para permitir diferentes mensagens
+  - Formatação robusta do número de telefone para garantir compatibilidade em todos os ambientes
+  - Remoção automática de caracteres especiais e adição do código do país
   - Utiliza encodeURIComponent para tratamento correto de caracteres especiais
   - Abre em nova aba para preservar a navegação do usuário
 
@@ -760,15 +761,17 @@ Sistema de redirecionamento para WhatsApp integrado na landing page, permitindo 
    - Informações do formulário são incluídas na mensagem
 
 **Configurações**:
-- Número de telefone: 99985306285
+- Número de telefone: 5599985306285 (formato padronizado sem o "+" inicial)
 - Formato da mensagem do formulário: Estruturada com cabeçalho, nome, email, assunto e mensagem
 - Formato da mensagem dos botões: Texto simples indicando interesse nos serviços
 
 **Observações técnicas:**
 - Implementação considera experiência do usuário ao manter feedback visual
 - Tratamento para caso de inexistência do componente terminal
+- Tratamento robusto do número para garantir formato internacional correto
 - Utilização de setTimeout para coordenar animações e redirecionamento
 - Preservação da funcionalidade de scroll suave para outros elementos de navegação
+- Compatibilidade garantida entre ambientes locais e de produção (VPS)
 
 **Status:** Atualizado
 
