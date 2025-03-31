@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <style>
+    .matrix {
+      animation: glitch 2s infinite alternate;
+    }
+    @keyframes glitch {
+      0%, 100% { fill: #00ff41; }
+      25% { fill: #00cc33; }
+      50% { fill: #00ff85; }
+      75% { fill: #00dd63; }
+    }
+  </style>
+  <rect width="32" height="32" fill="#111" rx="4" ry="4"/>
+  <path class="matrix" d="M8 8 L8 24 L14 24 C18 24 24 21 24 16 C24 11 18 8 14 8 Z M12 12 L14 12 C16 12 20 13 20 16 C20 19 16 20 14 20 L12 20 Z" fill="#00ff41"/>
+</svg> 

@@ -1,0 +1,8 @@
+Este é um arquivo binário que não pode ser criado diretamente pelo assistente. Por favor, use uma ferramenta de conversão online para converter o arquivo favicon.svg para favicon.png, como:
+
+1. https://convertio.co/svg-png/
+2. https://cloudconvert.com/svg-to-png
+3. https://favicon.io/favicon-converter/
+
+Ou use um comando como:
+- Na linha de comando com ImageMagick: `convert favicon.svg favicon.png` 
